@@ -18,18 +18,25 @@
     {% endif %}
 {% endif %}
 
+<style>
+ 
+input{
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
+
+</style>
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center">Register</h3>
+                    <div class="panel-title text-center" style="color:black">Register</div>
                 </div>
                 <div class="panel-body">
                     <form method="post" action="">
                         {% csrf_token %}
-
-                        <p class="bs-component">
                             <table>
                                 <tr>
                                     <td>{{ form.first_name.label_tag }}</td>
@@ -60,10 +67,11 @@
                                     <td>{{ form1.age }}</td>
                                 </tr>
                             </table>
-                        </p>
-                        <p class="bs-component">
+                            <p class="bs-component">
+                            <br>
+                            <br>
                             <center>
-                                <input class="btn btn-success btn-sm" type="submit" value="Register" />
+                                <input class="btn btn-success btn-md" type="submit" value="Register" />
                             </center>
                         </p>
                         <input type="hidden" name="next" value="{{ next }}" />
