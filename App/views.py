@@ -83,8 +83,7 @@ def discuss(request):
 		'doctor': doctor_discuss,
 		'user': user_discuss
 	}
-	print context
-	return render(request, 'App/viewdiscuss.html', context=context)
+	return render(request, 'App/viewdiscuss.html', context)
 
 @login_required(login_url='login/')
 def createDiscuss(request):
