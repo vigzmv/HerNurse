@@ -21,28 +21,30 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
+            
                 <div class="text-center">
-                    <p style="min-width:100%;"><h3 class="panel-title text-center">Please Sign In</h3></p>
+                    <p style="min-width:100%;"></p>
                 </div>
-                <hr />
-                <div class="panel-body">
+                <div class="signin-form">
+                <div class="panel-title text-center" style="color:white">Please Sign In &nbsp; &nbsp;&nbsp; &nbsp;</div>
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
-                        <p class="bs-component">
+                        <div style="display:flex;justify-content:center;align-items:center;">
+                        <div class="login-form">
                             <table>
                                 <tr>
-                                    <td>{{ form.username.label_tag }}</td>
+                                    <!-- <td>{{ form.username.label_tag }}</td> -->
                                     <td>{{ form.username }}</td>
                                 </tr>
                                 <tr>
-                                    <td>{{ form.password.label_tag }}</td>
+                                    <!-- <td>{{ form.password.label_tag }}</td> -->
                                     <td>{{ form.password }}</td>
                                 </tr>
                             </table>
                             <br/>
-                            <p class="text-center">Not a User? <a href="{% url 'register' %}">Register</a></p>
-                        </p>
+                        </div>
+                        </div>
+                            <p style="color:white">Not a User? &nbsp; &nbsp; <a href="{% url 'register' %}">Register</a></p>
                         <p class="bs-component">
                             <center>
                                 <input class="btn btn-success btn-sm" type="submit" value="Login" />
@@ -52,7 +54,6 @@
                     </form>
                 </div>
             </div>
-            <hr />
         </div>
     </div>
 </div>
