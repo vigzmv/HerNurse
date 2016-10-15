@@ -28,3 +28,13 @@ class DiscussForm(forms.ModelForm):
 	class Meta:
 		model = ModelDiscuss
 		fields = ('__all__')
+
+class AnswerForm(forms.ModelForm):
+	class Meta:
+		model = ModelAnswer
+		exclude = ('user', 'ques',)
+
+class QuestionForm(forms.ModelForm):
+	class Meta:
+		model = ModelQuestion
+		exclude = ('user',)
