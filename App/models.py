@@ -2,11 +2,19 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 
 
 class ModelUser(models.Model):
+    USER_ROLES = (
+        ('user', 'USER'),
+        ('doctor', 'DOCTOR'),
+        ('expert', 'EXPERT'),
+    )
+
     user = models.ForeignKey(User)
     phone_number = models.CharField(max_length=10, blank=True, null=False)
+    role = models.CharField(max_length=10, choices=USER_ROLES, default="user")
     age = models.IntegerField()
 
     def __str__(self):
@@ -26,6 +34,7 @@ class ModelDiscuss(models.Model):
     body = models.CharField(max_length=500, default="")
     link = models.CharField(max_length=100, default="", blank=True)
     tag = models.ManyToManyField(ModelTag)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.heading

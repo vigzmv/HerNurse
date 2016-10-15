@@ -5,12 +5,25 @@ from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.models import User
 from App import forms
+
+from .models import *
 
 @login_required(login_url="login/")
 
 def home(request):
-	return render(request,"home.html")
+	if request.user.is_superuser:
+		user = User.objects.get(username=request.user.username)
+		return render(request,"home.html", {'user':user})
+	if request.user.is_authenticated():
+		user_temp = User.objects.get(username=request.user.username)
+		user = ModelUser.objects.get(user=user_temp)
+		context = {
+			'user': user
+		}
+		return render(request,"App/home.html", context=context)
+	return HttpResponseRedirect('/login')
 
 
 def register(request):
@@ -58,3 +71,17 @@ def change_password(request):
 	else:
 		messages.error(request, 'You Are not logged In')
 		return redirect('/')
+
+@login_required(login_url='login/')
+def discuss(request):
+	expert_discuss = ModelDiscuss.objects.filter(source='expert').order_by('-timestamp')[:10]
+	doctor_discuss = ModelDiscuss.objects.filter(source='doctor').order_by('-timestamp')[:10]
+	user_discuss = ModelDiscuss.objects.filter(source='user').order_by('-timestamp')[:10]
+
+	context = {
+		'expert': expert_discuss,
+		'doctor': doctor_discuss,
+		'user': user_discuss
+	}
+	print context
+	return render(request, 'App/viewdiscuss.html', context=context)

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {'next_page': '/login'}),
     url(r'^register/$', App_v.register, name="register"),
     url(r'^password/$', App_v.change_password, name='change_password'),
+    url(r'^discuss/$', App_v.discuss, name='discussion'),
 ]
