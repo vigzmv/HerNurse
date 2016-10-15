@@ -1,14 +1,3 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-/*--reset--*/
-/*input,label{
-        margin-top:10px;
-        margin-left:10px;
-    }*/
 
 .text-center{
     color:white;
@@ -16,6 +5,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 html,body{
     min-height: 100%;
+    overflow-x: hidden;
 }
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
@@ -330,7 +320,7 @@ ul.nav1 li a:hover,ul.nav li a:hover{
     cursor: pointer;
     background: #4bc2ff;
     box-shadow: 0px 2px 1px rgba(28, 28, 29, 0.42);
-	
+
 }
 .signin-form input[type="submit"]:hover {
     color: #4DC2FF;
@@ -853,4 +843,12 @@ canvas#line {
     width: 287px !important;
 }
 }
-/*--//responsive-design---*/
+.dash-img{
+  min-height: 200px;
+  min-width: 200px;
+}
+.info h2{
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: white;
+}
