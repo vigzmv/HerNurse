@@ -21,12 +21,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
                 <div class="text-center">
                     <p style="min-width:100%;"></p>
                 </div>
                 <div class="signin-form">
-                <div class="panel-title text-center" style="color:white">Please Sign In &nbsp; &nbsp;&nbsp; &nbsp;</div>
+                <div class="panel-title text-center" style="color:white; font-size: 1.5em">Please Sign In &nbsp;&nbsp; &nbsp;</div>
+                <br>
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         <div style="display:flex;justify-content:center;align-items:center;">
@@ -44,11 +50,26 @@
                             <br/>
                         </div>
                         </div>
-                            <p style="color:white">Not a User? &nbsp; &nbsp; <a href="{% url 'register' %}">Register</a></p>
+                            <p style="color:white; font-size:1.1em">Not a User? &nbsp; &nbsp;&nbsp; <a href="{% url 'register' %}">Register</a></p>
                         <p class="bs-component">
                             <center>
                                 <input class="btn btn-success btn-sm" type="submit" value="Login" />
                             </center>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                      
                         </p>
                         <input type="hidden" name="next" value="{{ next }}" />
                     </form>
