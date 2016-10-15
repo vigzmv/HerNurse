@@ -6,7 +6,7 @@ from django.db import models
 
 class ModelUser(models.Model):
     user = models.ForeignKey(User)
-    phoneNumber = models.CharField(max_length=10, blank=True, null=False)
+    phone_number = models.CharField(max_length=10, blank=True, null=False)
     age = models.IntegerField()
 
     def __str__(self):

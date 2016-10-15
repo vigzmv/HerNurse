@@ -17,16 +17,22 @@ def register(request):
 	if not request.user.is_authenticated():
 		if request.method == "POST":
 			form1 = forms.UserSignUpForm(request.POST)
-			if form1.is_valid():
+			form2 = forms.ModelUserSignup(request.POST)
+			if form1.is_valid() and form2.is_valid():
 				user = form1.save(commit=False)
 				user.password = make_password(form1.cleaned_data['password'])
 				user.email = form1.cleaned_data['email']
 				user.save()
+				user1 = form2.save(commit=False)
+				user1.user = user
+				user1.save()
 				return HttpResponseRedirect('/')
 		else:
 			form1 = forms.UserSignUpForm()
+			form2 = forms.ModelUserSignup()
 		return render(request,'App/register.html',context={
-			'form':form1
+			'form':form1,
+			'form1':form2
 			})
 	else:
 		messages.error(request, 'You Are logged In')
@@ -52,4 +58,3 @@ def change_password(request):
 	else:
 		messages.error(request, 'You Are not logged In')
 		return redirect('/')
-
