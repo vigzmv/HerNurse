@@ -13,4 +13,8 @@ urlpatterns = [
     url(r'^password/$', App_v.change_password, name='change_password'),
     url(r'^discuss/$', App_v.discuss, name='discuss'),
     url(r'^creatediscuss/$', App_v.createDiscuss, name='createDiscuss'),
+    url(r'^questions/$', App_v.question, name='viewQuestions'),
+    url(r'^answer/(?P<pk>\d+)/$', App_v.answer, name='answer'),
+    url(r'^postQuestion/$', App_v.postQuestion, name='postQuestion'),
+    url(r'^viewquestion/(?P<pk>\d+)/$', App_v.viewQuestion, name='viewQuestion'),
 ]

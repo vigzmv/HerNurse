@@ -107,3 +107,57 @@ def createDiscuss(request):
 	if request.method == 'GET':
 		DiscussForm = forms.DiscussForm()
 	return render(request, 'App/createDiscuss.html', context={'form':DiscussForm})
+
+@login_required(login_url='login/')
+def question(request):
+	questions = ModelQuestion.objects.all().order_by('-timestamp')[:20]
+	return render(request, 'App/viewQuestions.html', context={'questions': questions})
+
+@login_required(login_url='login/')
+def answer(request, pk):
+	try:
+		question = ModelQuestion.objects.get(pk=pk)
+	except ModelQuestion.DoesNotExist:
+		return HttpResponseRedirect('/')
+	if request.method == 'POST':
+		form = AnswerForm(request.POST)
+		if form.is_valid():
+			form = form.save(commit=False)
+			form.user = User.objects.get(username=request.user.username)
+			form.ques = ModelQuestion.objects.get(pk=pk)
+			form.save()
+			return HttpResponseRedirect('/questions')
+	if request.method == 'GET':
+		form = AnswerForm()
+		return render(request, 'App/answer.html', context={'form': form})
+	return HttpResponseRedirect('/')
+
+@login_required(login_url='login/')
+def postQuestion(request):
+	if request.method == 'POST':
+		form = QuestionForm(request.POST)
+		if form.is_valid():
+			form = form.save(commit=False)
+			form.user = User.objects.get(username=request.user.username)
+			form.save()
+			return render(request, 'App/postQuestion.html', context={'form': form})
+	if request.method == 'GET':
+		form = QuestionForm()
+		return render(request, 'App/postQuestion.html', context={'form': form})
+	return HttpResponseRedirect('/')
+
+@login_required(login_url='login/')
+def viewQuestion(request,pk):
+	try:
+		question = ModelQuestion.objects.get(pk=pk)
+	except ModelQuestion.DoesNotExist:
+		return HttpResponseRedirect('/questions/')
+	try:
+		answers = ModelAnswer.objects.filter(ques=question).order_[:7]
+	except ModelAnswer.DoesNotExist:
+		answers = []
+	context = {
+		'question': question,
+		'answers': answers
+	}
+	return render(request, 'App/viewQuestion.html', context=context)
