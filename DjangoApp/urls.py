@@ -8,7 +8,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('App.urls')),
     url(r'^login/$', views.login, {'template_name': 'login.html', 'authentication_form': LoginForm}, name='login'),
-    url(r'^logout/$', views.logout, {'next_page': '/login'}),
+    url(r'^logout/$', views.logout, {'next_page': '/login'}, name='logout'),
     url(r'^register/$', App_v.register, name="register"),
     url(r'^password/$', App_v.change_password, name='change_password'),
     url(r'^discuss/$', App_v.discuss, name='discuss'),
