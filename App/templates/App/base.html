@@ -29,21 +29,39 @@
                 <body>
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                <p class="text-center"><a class="navbar-brand" href="#">Lady</a></p>
+                            <div class="navbar-header" style="float:left">
+                            <div class="menu" style="margin-top:16px;margin-left:20px;">
+                                    <span class="menu-icon">
+                                    <a href="#"><img src={% static 'App/images/menu-icon.png' %} alt=""/></a></span> 
+                                        <ul class="nav1">
+                                            <li><a href="#">Home</a></li>
+                                            <li><a href="#">About</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Gallery</a></li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>   
+                                        <!-- script-for-menu -->
+                                         <script>
+                                           $( "span.menu-icon" ).click(function() {
+                                             $( "ul.nav1" ).slideToggle( 300, function() {
+                                             // Animation complete.
+                                              });
+                                             });
+                                        </script>
+                                        <!-- /script-for-menu -->
+                                </div>
                             </div>
+                            <div class="pull-right" style=""><a class="navbar-brand" href="#">Lady</a></div>
                         </div>
-                    </nav>
 
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 {% block content %}
                 {% endblock %}
-
+      
 
                     <!-- Core Scripts - Include with every page -->
                     <script src = "{% static 'App/js/jquery.min.js' %}"></script>
