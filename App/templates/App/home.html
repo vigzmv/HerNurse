@@ -17,7 +17,6 @@
         <div class="info col-md-8 col-md-offset-2">
             <h2>Name:{{ user.user.first_name }} {{ user.user.last_name }}</h2>
             <h2>Username:{{ user.user.username }}</h2>
-            <h2>Age:{{ user.age}}</h2>
             <h2>E-mail:{{ user.user.email }}</h2>
             <h2>Contact:{{ user.phone_number }}</h2>
           </div>
@@ -28,6 +27,11 @@
     <div class="row">
       <div class="col-md-12">
         <h1>Health Information</h1>
+        <div class="info col-md-8 col-md-offset-2">
+
+            <h2>Age:{{ user.age}}</h2>
+
+          </div>
       </div>
     </div>
 </div>
