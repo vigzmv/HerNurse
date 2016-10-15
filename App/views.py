@@ -85,3 +85,25 @@ def discuss(request):
 	}
 	print context
 	return render(request, 'App/viewdiscuss.html', context=context)
+
+@login_required(login_url='login/')
+def createDiscuss(request):
+	if request.user.is_superuser:
+		user = User.objects.get(username=request.user.username)
+	else:
+		user_temp = User.objects.get(username=request.user.username)
+		user = ModelUser.objects.get(user=user_temp)
+	if request.method == 'POST':
+		DiscussForm = forms.DiscussForm(request.POST)
+		if DiscussForm.is_valid():
+			form = DiscussForm.save(commit=False)
+			if hasattr(user,'role'):
+				form.source = user.role
+			else:
+				form.source = 'expert'
+			form.user = user
+			form.save()
+			return HttpResponseRedirect('/discuss/')
+	if request.method == 'GET':
+		DiscussForm = forms.DiscussForm()
+	return render(request, 'App/createDiscuss.html', context={'form':DiscussForm})

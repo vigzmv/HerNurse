@@ -23,3 +23,8 @@ class ModelUserSignup(forms.ModelForm):
 class LoginForm(AuthenticationForm):
 	username = forms.CharField(label="Username", max_length=30,widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
 	password = forms.CharField(label="Password", max_length=30,widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'password'}))
+
+class DiscussForm(forms.ModelForm):
+	class Meta:
+		model = ModelDiscuss
+		fields = ('__all__')
