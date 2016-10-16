@@ -1,20 +1,113 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
 
-<h1>Experts : </h1>
+{% block content %}
+
+<style>
+	*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans serif;
+  background-color: #ddd;
+}
+
+.cards {
+  margin: 2rem auto;
+  max-width: 90%;
+  text-align: center;
+}
+
+.card {
+  $size = 300px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: $size;
+  height: $size * .75;
+  margin: 1.5rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 10, .1);
+}
+
+.card-content {
+  position: relative;
+  padding: 2rem;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+.title {
+  display: block;
+  margin: 1em 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0;
+  color: gray;
+  line-height: 1.5;
+}
+</style>
+<div class="cards">
 {% for d in expert %}
-<p>
-  {{ d }}
-</p>
+  <div class="card">
+    <div class="card-bg"></div>
+    <div class="card-content">
+    <div class="label">{{ d.user }}</div>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
+      <br>
+      <br>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
+    </div>
+  </div>
 {% endfor %}
-<h1>Doctors : </h1>
 {% for d in doctor %}
-<p>
-  {{ d }}
-</p>
+   <div class="card">
+    <div class="card-bg"></div>
+    <div class="card-content">
+    <div class="label">{{ d.user }}</div>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
+      <br>
+      <br>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
+    </div>
+  </div>
 {% endfor %}
-<h1>Users : </h1>
 {% for d in user %}
-<p>
-  {{ d }}
-</p>
+  <div class="card">
+    <div class="card-bg"></div>
+    <div class="card-content">
+    <div class="label">{{ d.user }}</div>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
+      <br>
+      <br>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
+    </div>
+  </div>
 {% endfor %}
+ </div>
+{% endblock %}

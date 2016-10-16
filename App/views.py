@@ -83,8 +83,7 @@ def discuss(request):
 		'doctor': doctor_discuss,
 		'user': user_discuss
 	}
-	print context
-	return render(request, 'App/viewdiscuss.html', context=context)
+	return render(request, 'App/viewdiscuss.html', context)
 
 @login_required(login_url='login/')
 def createDiscuss(request):
@@ -153,7 +152,7 @@ def viewQuestion(request,pk):
 	except ModelQuestion.DoesNotExist:
 		return HttpResponseRedirect('/questions/')
 	try:
-		answers = ModelAnswer.objects.filter(ques=question).order_[:7]
+		answers = ModelAnswer.objects.filter(ques=question).order_by('-timestamp')[:7]
 	except ModelAnswer.DoesNotExist:
 		answers = []
 	context = {
