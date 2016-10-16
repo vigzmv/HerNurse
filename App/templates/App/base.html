@@ -38,10 +38,12 @@
                                     <span class="menu-icon">
                                     <a href="#"><img src={% static 'App/images/menu-icon.png' %} alt=""/></a></span>
                                         <ul class="nav1">
-                                            <li><a href="#">Home</a></li>
-                                            <li><a href="#">About</a></li>
-                                            <li><a href="#">Services</a></li>
-                                            <li><a href="#">Gallery</a></li>
+                                            <li><a href={% url 'home' %}>Home</a></li>
+                                            <li><a href={% url 'home' %}>About</a></li>
+                                            <li><a href={% url 'discuss' %}>Discus</a></li>
+                                            <li><a href={% url 'createDiscuss' %}>Start Discus</a></li>
+                                            <li><a href={% url 'viewQuestions' %}>Questions</a></li>
+                                            <li><a href={% url 'postQuestion' %}>Post Questions</a></li>
                                             <li><a href={% url 'logout' %}>Logout</a></li>
                                         </ul>
                                         <!-- script-for-menu -->
@@ -55,7 +57,7 @@
                                         <!-- /script-for-menu -->
                                 </div>
                             </div>
-                            <div class="pull-right" style=""><a class="navbar-brand" href="#">Lady</a></div>
+                            <div class="pull-right" style=""><a class="navbar-brand" href="#">Nurse</a></div>
                         </div>
 
                     </nav>

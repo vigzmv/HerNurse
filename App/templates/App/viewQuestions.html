@@ -67,22 +67,17 @@ body {
 }
 </style>
 
+  {% for q in questions %}
 <div class="container" style="width:100%">
 <div class="card" style="width:90%">
     <div class="card-bg"></div>
     <div class="card-content">
-    <div class="label">{{ question.question }}</div>
-    <span class="title center pull-right" style="color:red;font-size:0.8em;">- {{ question.user|title }}</span>
+
+    <div class="label"><a href="/viewquestion/{{ q.pk }}"><p>{{ q.question }}</p></a></div>
+    <span class="title center pull-right" style="color:red;font-size:0.7em;">- {{ q.user|title }}</span>
       <br>
-      {% for a in answers %}
-    <hr>
-		<p>{{ a.answer }}</p>
-		<br>
-		<br>
-		<p style="color:red;text-align:right;font-size:0.7em">- {{ a.user }}</p>
-		<br>
-	{% endfor %}
     </div>
   </div>
  </div>
+    {% endfor %}
 {% endblock %}

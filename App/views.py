@@ -134,14 +134,14 @@ def answer(request, pk):
 @login_required(login_url='login/')
 def postQuestion(request):
 	if request.method == 'POST':
-		form = QuestionForm(request.POST)
+		form = forms.QuestionForm(request.POST)
 		if form.is_valid():
 			form = form.save(commit=False)
 			form.user = User.objects.get(username=request.user.username)
 			form.save()
 			return render(request, 'App/postQuestion.html', context={'form': form})
 	if request.method == 'GET':
-		form = QuestionForm()
+		form = forms.QuestionForm()
 		return render(request, 'App/postQuestion.html', context={'form': form})
 	return HttpResponseRedirect('/')
 
@@ -159,4 +159,5 @@ def viewQuestion(request,pk):
 		'question': question,
 		'answers': answers
 	}
+	print context
 	return render(request, 'App/viewQuestion.html', context=context)

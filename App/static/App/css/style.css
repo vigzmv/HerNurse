@@ -2,7 +2,9 @@
 .text-center{
     color:white;
 }
-
+.label{
+    white-space: initial !important;
+}
 html,body{
     min-height: 100%;
     overflow-x: hidden;

@@ -31,7 +31,7 @@ class ModelDiscuss(models.Model):
     user = models.ForeignKey(User, blank=True, null=True)
     source = models.CharField(max_length=30, default="", blank=True)
     heading = models.CharField(max_length=250, default="", blank=False)
-    body = models.CharField(max_length=500, default="")
+    body = models.TextField(default="")
     link = models.CharField(max_length=100, default="", blank=True)
     tag = models.ManyToManyField(ModelTag)
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -41,7 +41,7 @@ class ModelDiscuss(models.Model):
 
 class ModelQuestion(models.Model):
     user = models.ForeignKey(User, blank=False, null=True)
-    question = models.CharField(max_length=200, blank=True, null=False)
+    question = models.TextField(null=False)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
