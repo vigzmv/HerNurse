@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
 
 <div class="container" style="min-height:100%">
     <div class="row">
-      <div class="col-xs-4 col-xs-offset-4">
-        <img src="" alt="" class="img-responsive img-circle dash-img" height="200" width="200">
+      <h1>Hello, {{user.name}}</h1>
+      <div class="col-xs-10 col-xs-offset-1">
+        <img src="{% static 'App/images/img1.jpg' %}" alt="" class="img-responsive img-circle dash-img align-center" style="margin:0 auto;">
       </div>
     </div>
     <hr>
-    <div class="row">
+    <div class="row info ">
       <div class="col-md-12">
         <div class="banner">
         <h1>Personal Info</h1>
         </div>
-        <div class="info col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
             <h2>Name:{{ user.user.first_name }} {{ user.user.last_name }}</h2>
             <h2>Username:{{ user.user.username }}</h2>
             <h2>E-mail:{{ user.user.email }}</h2>
@@ -24,15 +25,84 @@
 
     </div>
     <hr>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="row info ">
+      <div class="col-md-12 ">
         <h1>Health Information</h1>
-        <div class="info col-md-8 col-md-offset-2">
-
-            <h2>Age:{{ user.age}}</h2>
-
+        <div class="col-md-8 col-md-offset-2">
+            <p><h2>Age:{{ user.age}}</h2></p>
+            <form>
+              <p>
+            <label for="height"><h2>Height (m)</h2></label>
+              <input type="text" name="height" id="height" name="height">
+            </p>
+            <p>
+            <label for="weight"><h2>Weight (kg)</h2></label>
+            <input type="text" name="weight" id="weight">
+          </p>
+            <p><h2>BMI: <span id="bmi"></span> </h2></p>
+            </form>
           </div>
       </div>
     </div>
+    <hr />
+    <div class="row info">
+      <h1>Menstrual Cycle Track</h1>
+      <div class="col-md-8 col-md-offset-2">
+        <p>
+          <label for="start"><h2>Period Start Date:</h2></label>
+          <input type="date" name="start" id="start">
+        </p>
+        <p>
+        <label for="cycle"><h2>Menstrual Cycle:</h2></label>
+        <input type="text" name="cycle" id="cycle">
+      </p>
+            <p><h2>Period End Date: <span id="end"></span></h2></p>
+
+            <p>
+              <h2>Ovulation/Fertility Time: <span id="ovu"></span></h2>
+          </p>
+      </div>
+    </div>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+{% block javascript%}
+<script>
+var bmir=0;
+  function bmi(){
+
+    b = parseFloat(parseFloat($("#weight").val())/(parseFloat($("#height").val())*parseFloat($("#height").val())));
+    console.log(b)
+    return b
+  };
+  $(document).ready(function() {
+    $("input[name=height]").on('change',function(){
+      bmir=bmi();
+    $("#bmi").html(bmir);
+  });
+      $("input[name=weight]").on('change',function(){
+        bmir=bmi();
+        $("#bmi").html(bmir.toPrecision(4));
+        //console.log("in"+ bmir);
+      });
+    console.log(bmir);
+    $("#cycle").on('change',function () {
+      var date = new Date($("#start").val());
+      console.log(date.getDate());
+      var inc = parseInt($("#cycle").val());
+      var newdate = new Date(date.setDate(date.getDate()+inc));
+      var newovudate = new Date(date.setDate(date.getDate()+inc+5));
+      $("#end").html(newdate.toDateString());
+      $("#ovu").html(newovudate.toDateString());
+      console.log(newdate);
+    });
+
+    });
+
+
+</script>
 {% endblock %}

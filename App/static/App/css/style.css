@@ -852,3 +852,8 @@ canvas#line {
   margin-top: 0.5rem;
   color: white;
 }
+
+form  { display: table;      }
+p     { display: table-row;  }
+label { display: table-cell; }
+input { display: table-cell;}
