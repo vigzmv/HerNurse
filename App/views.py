@@ -152,7 +152,7 @@ def viewQuestion(request,pk):
 	except ModelQuestion.DoesNotExist:
 		return HttpResponseRedirect('/questions/')
 	try:
-		answers = ModelAnswer.objects.filter(ques=question).order_[:7]
+		answers = ModelAnswer.objects.filter(ques=question).order_by('-timestamp')[:7]
 	except ModelAnswer.DoesNotExist:
 		answers = []
 	context = {

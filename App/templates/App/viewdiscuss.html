@@ -72,39 +72,39 @@ body {
     <div class="card-bg"></div>
     <div class="card-content">
     <div class="label">{{ d.user }}</div>
-    <span class="title center">{{ d.heading }}</span>
-      <p class="description">{{ d.body }}</p>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
       <br>
       <br>
-      <p class="description" style="font-size:0.8em; color:red">{{ d.source.upper() }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
       <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
     </div>
   </div>
 {% endfor %}
 {% for d in doctor %}
- <div class="card">
+   <div class="card">
     <div class="card-bg"></div>
     <div class="card-content">
     <div class="label">{{ d.user }}</div>
-    <span class="title center">{{ d.heading }}</span>
-      <p class="description">{{ d.body }}</p>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
       <br>
       <br>
-      <p class="description" style="font-size:0.8em; color:red">{{ d.source }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
       <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
     </div>
   </div>
 {% endfor %}
 {% for d in user %}
-<div class="card">
+  <div class="card">
     <div class="card-bg"></div>
     <div class="card-content">
     <div class="label">{{ d.user }}</div>
-    <span class="title center">{{ d.heading }}</span>
-      <p class="description">{{ d.body }}</p>
+    <span class="title center">{{ d.heading|title }}</span>
+      <p class="description">{{ d.body|title }}</p>
       <br>
       <br>
-      <p class="description" style="font-size:0.8em; color:red">{{ d.source }}</p>
+      <p class="description" style="font-size:0.8em; color:red">{{ d.source|title }}</p>
       <p class="description" style="font-size:0.8em; color:red">{{ d.link }}</p>
     </div>
   </div>
